@@ -10,6 +10,19 @@ var bridge = document.getElementById("bridge"),
     brushRadius = (bridge.width / 100) * 5,
     img = new Image();
 
+aspect_ratio_target = 1280 / 720;
+current_aspect_ratio = window.innerWidth / window.innerHeight;
+
+if (current_aspect_ratio < aspect_ratio_target) {
+    schermata_alert.removeAttribute('hidden');
+    schermata_principale.setAttribute('hidden', 'hidden')
+} else {
+    schermata_alert.setAttribute('hidden', 'hidden');
+    if (schermata_iniziale.hasAttribute('hidden')) {
+        schermata_principale.removeAttribute('hidden');
+    }
+}
+
 current_picture = 1;
 
 if (brushRadius < 50) { brushRadius = 50 }
@@ -104,10 +117,10 @@ function bgImageSwitcherPrevious() {
 
 bridge.addEventListener("mousemove", function(e) {
 	var brushPos = getBrushPos(e.clientX, e.clientY);
-  var leftBut = detectLeftButton(e);
-  if (leftBut == 1) {
+    var leftBut = detectLeftButton(e);
+    if (leftBut == 1) {
 		drawDot(brushPos.x, brushPos.y);
-  }
+    }
 }, false);
 
 bridge.addEventListener("touchmove", function(e) {
@@ -122,7 +135,6 @@ bridge.addEventListener("touchmove", function(e) {
 function alertTriggerer() {
     aspect_ratio_target = 1280 / 720;
     current_aspect_ratio = window.innerWidth / window.innerHeight;
-    if (schermata_iniziale.hasAttribute('hidden')) {
         if (current_aspect_ratio < aspect_ratio_target) {
             schermata_alert.removeAttribute('hidden');
             schermata_principale.setAttribute('hidden', 'hidden')
@@ -132,7 +144,6 @@ function alertTriggerer() {
                 schermata_principale.removeAttribute('hidden');
             }
         }
-    }
 }
 
 function startExperience() {

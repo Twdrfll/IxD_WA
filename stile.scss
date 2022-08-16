@@ -18,9 +18,9 @@ body {
   margin: 0 auto;
   // background-image: -webkit-image-set(url('immagini/1\ \(2\).png') 1x, url('immagini/1\ \(2\).png') 2x);
   background-size: cover;
-  width: 100%;
-  max-width: 1280px;
-  height: auto;
+  height: 90%;
+  max-height: 1280px;
+  width: auto;
   cursor: crosshair;
   cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/circular-cursor.png) 53 53, crosshair;
 }
