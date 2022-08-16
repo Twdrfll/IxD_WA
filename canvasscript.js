@@ -3,6 +3,7 @@ const schermata_iniziale = document.getElementById("schermata-iniziale");
 const schermata_principale = document.getElementById("schermata-principale");
 const indietro = document.getElementById("indietro"); // tasto indietro
 const avanti = document.getElementById("avanti"); // tasto avanti
+const fullscreen = document.getElementById("fullscreen"); // tasto avanti
 const start_experience = document.getElementById("start-experience"); // tasto iniziale
 const condividi = document.getElementById("condividi"); // tasto condividi
 var bridge = document.getElementById("bridge"),
@@ -151,10 +152,29 @@ function startExperience() {
     schermata_principale.removeAttribute('hidden');
 }
 
+function getFullscreenElement() {
+    return document.fullscreenElement   //standard property
+        || document.webkitFullscreenElement //safari/opera support
+        || document.mozFullscreenElement    //firefox support
+        || document.msFullscreenElement;    //ie/edge support
+}
+
+function toggleFullscreen() {
+    if(getFullscreenElement()) {
+        document.exitFullscreen();
+    }else {
+        document.documentElement.requestFullscreen().catch(console.log);
+    }
+}
+
 start_experience.addEventListener("click", startExperience);
 
 avanti.addEventListener("click", bgImageSwitcherNext);
 
 indietro.addEventListener("click", bgImageSwitcherPrevious);
+
+fullscreen.addEventListener("click", () => {
+    toggleFullscreen();
+});
 
 window.onresize = alertTriggerer;
