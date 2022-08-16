@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'BL Melody';
+  src: url('BL-Melody-Family/BL Melody Family/BLMelody-Bold.woff2') format('woff2'),
+      url('BL-Melody-Family/BL Melody Family/BLMelody-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  height: 100%;
+  width: auto;
+  background-color: black;
+}
+
+#bridge {
+  display: block;
+  margin: 0 auto;
+  // background-image: -webkit-image-set(url('immagini/1\ \(2\).png') 1x, url('immagini/1\ \(2\).png') 2x);
+  background-size: cover;
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+  cursor: crosshair;
+  cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/circular-cursor.png) 53 53, crosshair;
+}
+
+#bridgeContainer {
+  text-align: center;
+  font-family: Avenir, sans-serif;
+}
+
+#bridgeContainer figcaption {
+  margin-top: 2rem;
+}
+
+#schermata-iniziale {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-family: 'BL Melody';
+  font-weight: bold;
+  font-style: normal;
+  color: antiquewhite;
+  background-color: black;
+}
+
+#schermata-principale {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-family: 'BL Melody';
+  font-weight: bold;
+  font-style: normal;
+  color: antiquewhite;
+  background-color: black;
+}
+
+#alert-rotazione-device {
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-family: 'BL Melody';
+  font-weight: bold;
+  font-style: normal;
+  color: antiquewhite;
+  background-color: black;
+}
+
+#display-centered-text {
+  padding: 25%;
+}
