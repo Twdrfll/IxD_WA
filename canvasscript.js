@@ -134,7 +134,7 @@ bridge.addEventListener("touchmove", function(e) {
 }, false);
 
 function alertTriggerer() {
-    aspect_ratio_target = 1280 / 720;
+    aspect_ratio_target = 1;
     current_aspect_ratio = window.innerWidth / window.innerHeight;
         if (current_aspect_ratio < aspect_ratio_target) {
             schermata_alert.removeAttribute('hidden');
