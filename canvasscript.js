@@ -1,3 +1,4 @@
+const schermata_audio = document.getElementById("selezione-preferenze");
 const schermata_alert = document.getElementById("alert-rotazione-device");
 const schermata_iniziale = document.getElementById("schermata-iniziale");
 const schermata_principale = document.getElementById("schermata-principale");
@@ -10,6 +11,8 @@ var bridge = document.getElementById("bridge"),
     bridgeCanvas = bridge.getContext('2d'),
     brushRadius = (bridge.width / 100) * 5,
     img = new Image();
+
+// controllo dell'aspect ratio della finestra del browser iniziale
 
 aspect_ratio_target = 1;
 current_aspect_ratio = window.innerWidth / window.innerHeight;
@@ -24,6 +27,8 @@ if (current_aspect_ratio < aspect_ratio_target) {
     }
 }
 
+// setup prima canvas iniziale
+
 current_picture = 1;
 
 if (brushRadius < 50) { brushRadius = 50 }
@@ -35,6 +40,8 @@ img.onload = function(){
 img.loc = 'immagini/';
 img.filename = '1\ \(1\).png';
 img.src = img.loc + img.filename;
+
+// setup impostazioni di disegno sul canvas
 
 function detectLeftButton(event) {
     if ('buttons' in event) {
@@ -62,6 +69,8 @@ function drawDot(mouseX,mouseY){
     bridgeCanvas.fill();
 }
 
+// funzioni di cambio immagine di background e interattiva su canvas
+
 function bgImageSwitcherNext() {
     let basic_string = "immagini/"
     if (current_picture < 10) {
@@ -70,9 +79,14 @@ function bgImageSwitcherNext() {
         new_url_top = current_picture.toString().concat('\ \(1\).png');
         img.onload = function() {
             bridgeCanvas.restore();
-            bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
-            bridgeCanvas.save();
-            bridge.style['background-image'] = 'url(\"' + basic_string + '/' + new_url_bg + '\")';
+            bgimgobj = new Image();
+            bgimgobj.onload = function() {
+                bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
+                bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
+                bridgeCanvas.save();
+            }
+            bgimgobj.loc = basic_string;
+            bgimgobj.src = basic_string.concat(new_url_bg);
         }
         img.src = basic_string.concat(new_url_top);
     } else {
@@ -81,9 +95,14 @@ function bgImageSwitcherNext() {
         new_url_top = current_picture.toString().concat('\ \(1\).png');
         img.onload = function() {
             bridgeCanvas.restore();
-            bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
-            bridgeCanvas.save();
-            bridge.style['background-image'] = 'url(\"' + basic_string + '/' + new_url_bg + '\")';
+            bgimgobj = new Image();
+            bgimgobj.onload = function() {
+                bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
+                bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
+                bridgeCanvas.save();
+            }
+            bgimgobj.loc = basic_string;
+            bgimgobj.src = basic_string.concat(new_url_bg);
         }
         img.src = basic_string.concat(new_url_top);
     }
@@ -97,9 +116,13 @@ function bgImageSwitcherPrevious() {
         new_url_top = current_picture.toString().concat('\ \(1\).png');
         img.onload = function() {
             bridgeCanvas.restore();
-            bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
-            bridgeCanvas.save();
-            bridge.style['background-image'] = 'url(\"' + basic_string + '/' + new_url_bg + '\")';
+            bgimgobj.onload = function() {
+                bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
+                bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
+                bridgeCanvas.save();
+            }
+            bgimgobj.loc = basic_string;
+            bgimgobj.src = basic_string.concat(new_url_bg);
         }
         img.src = basic_string.concat(new_url_top);
     } else {
@@ -108,13 +131,19 @@ function bgImageSwitcherPrevious() {
         new_url_top = current_picture.toString().concat('\ \(1\).png');
         img.onload = function() {
             bridgeCanvas.restore();
-            bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
-            bridgeCanvas.save();
-            bridge.style['background-image'] = 'url(\"' + basic_string + '/' + new_url_bg + '\")';
+            bgimgobj.onload = function() {
+                bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
+                bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
+                bridgeCanvas.save();
+            }
+            bgimgobj.loc = basic_string;
+            bgimgobj.src = basic_string.concat(new_url_bg);
         }
         img.src = basic_string.concat(new_url_top);
     }
 }
+
+// setup listener di eventi su canvas
 
 bridge.addEventListener("mousemove", function(e) {
 	var brushPos = getBrushPos(e.clientX, e.clientY);
@@ -132,6 +161,8 @@ bridge.addEventListener("touchmove", function(e) {
         drawDot(brushPos.x, brushPos.y);
     }
 }, false);
+
+// altre funzioni
 
 function alertTriggerer() {
     aspect_ratio_target = 1;
@@ -166,6 +197,8 @@ function toggleFullscreen() {
         document.documentElement.requestFullscreen().catch(console.log);
     }
 }
+
+// altri listener
 
 start_experience.addEventListener("click", startExperience);
 
