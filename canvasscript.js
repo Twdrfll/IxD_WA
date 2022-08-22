@@ -1,7 +1,5 @@
-const schermata_audio = document.getElementById("selezione-preferenze");
-const schermata_alert = document.getElementById("alert-rotazione-device");
-const schermata_iniziale = document.getElementById("schermata-iniziale");
-const schermata_principale = document.getElementById("schermata-principale");
+const schermata_alert = document.getElementById("main-alert");
+const schermata_principale = document.getElementById("page-div");
 const indietro = document.getElementById("indietro"); // tasto indietro
 const avanti = document.getElementById("avanti"); // tasto avanti
 const fullscreen = document.getElementById("fullscreen"); // tasto avanti
@@ -11,21 +9,6 @@ var bridge = document.getElementById("bridge"),
     bridgeCanvas = bridge.getContext('2d'),
     brushRadius = (bridge.width / 100) * 5,
     img = new Image();
-
-// controllo dell'aspect ratio della finestra del browser iniziale
-
-aspect_ratio_target = 1;
-current_aspect_ratio = window.innerWidth / window.innerHeight;
-
-if (current_aspect_ratio < aspect_ratio_target) {
-    schermata_alert.removeAttribute('hidden');
-    schermata_principale.setAttribute('hidden', 'hidden')
-} else {
-    schermata_alert.setAttribute('hidden', 'hidden');
-    if (schermata_iniziale.hasAttribute('hidden')) {
-        schermata_principale.removeAttribute('hidden');
-    }
-}
 
 // setup prima canvas iniziale
 
@@ -164,25 +147,6 @@ bridge.addEventListener("touchmove", function(e) {
 
 // altre funzioni
 
-function alertTriggerer() {
-    aspect_ratio_target = 1;
-    current_aspect_ratio = window.innerWidth / window.innerHeight;
-        if (current_aspect_ratio < aspect_ratio_target) {
-            schermata_alert.removeAttribute('hidden');
-            schermata_principale.setAttribute('hidden', 'hidden')
-        } else {
-            schermata_alert.setAttribute('hidden', 'hidden');
-            if (schermata_iniziale.hasAttribute('hidden')) {
-                schermata_principale.removeAttribute('hidden');
-            }
-        }
-}
-
-function startExperience() {
-    schermata_iniziale.hidden = 'true';
-    schermata_principale.removeAttribute('hidden');
-}
-
 function getFullscreenElement() {
     return document.fullscreenElement   //standard property
         || document.webkitFullscreenElement //safari/opera support
@@ -200,14 +164,6 @@ function toggleFullscreen() {
 
 // altri listener
 
-start_experience.addEventListener("click", startExperience);
-
 avanti.addEventListener("click", bgImageSwitcherNext);
 
 indietro.addEventListener("click", bgImageSwitcherPrevious);
-
-fullscreen.addEventListener("click", () => {
-    toggleFullscreen();
-});
-
-window.onresize = alertTriggerer;
