@@ -1,3 +1,4 @@
+const schermata_alert = document.getElementById("main-alert");
 const schermata_principale = document.getElementById("page-div");
 const indietro = document.getElementById("indietro"); // tasto indietro
 const avanti = document.getElementById("avanti"); // tasto avanti
