@@ -11,12 +11,24 @@ var bridge = document.getElementById("bridge"),
 
 // setup prima canvas iniziale
 
+if (window.matchMedia("only screen and (min-width: 1000px)").matches) {
+    if ((document.getElementById("canvas-div").offsetWidth / document.getElementById("canvas-div").offsetHeight) < 1.77) {
+        bridge.style["width"] = "100%";
+        bridge.style["max-width"] = "1280px";
+        bridge.style["height"] = "auto";
+    } else {
+        bridge.style["height"] = "100%";
+        bridge.style["max-height"] = "720px";
+        bridge.style["width"] = "auto";
+    }
+}
+
 current_picture = 1;
 
 if (brushRadius < 50) { brushRadius = 50 }
 
-img.onload = function(){  
-	bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
+img.onload = function () {
+    bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
     bridgeCanvas.save();
 }
 img.loc = 'immagini/';
@@ -36,16 +48,16 @@ function detectLeftButton(event) {
 }
 
 function getBrushPos(xRef, yRef) {
-	var bridgeRect = bridge.getBoundingClientRect();
+    var bridgeRect = bridge.getBoundingClientRect();
     return {
-	  x: Math.floor((xRef-bridgeRect.left)/(bridgeRect.right-bridgeRect.left)*bridge.width),
-	  y: Math.floor((yRef-bridgeRect.top)/(bridgeRect.bottom-bridgeRect.top)*bridge.height)
+        x: Math.floor((xRef - bridgeRect.left) / (bridgeRect.right - bridgeRect.left) * bridge.width),
+        y: Math.floor((yRef - bridgeRect.top) / (bridgeRect.bottom - bridgeRect.top) * bridge.height)
     };
 }
-      
-function drawDot(mouseX,mouseY){
-	bridgeCanvas.beginPath();
-    bridgeCanvas.arc(mouseX, mouseY, brushRadius, 0, 2*Math.PI, true);
+
+function drawDot(mouseX, mouseY) {
+    bridgeCanvas.beginPath();
+    bridgeCanvas.arc(mouseX, mouseY, brushRadius, 0, 2 * Math.PI, true);
     bridgeCanvas.fillStyle = '#000';
     bridgeCanvas.globalCompositeOperation = "destination-out";
     bridgeCanvas.fill();
@@ -59,10 +71,10 @@ function bgImageSwitcherNext() {
         current_picture++;
         new_url_bg = current_picture.toString().concat('\ \(2\).png');
         new_url_top = current_picture.toString().concat('\ \(1\).png');
-        img.onload = function() {
+        img.onload = function () {
             bridgeCanvas.restore();
             bgimgobj = new Image();
-            bgimgobj.onload = function() {
+            bgimgobj.onload = function () {
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
                 bridgeCanvas.save();
@@ -75,10 +87,10 @@ function bgImageSwitcherNext() {
         current_picture = 1
         new_url_bg = current_picture.toString().concat('\ \(2\).png');
         new_url_top = current_picture.toString().concat('\ \(1\).png');
-        img.onload = function() {
+        img.onload = function () {
             bridgeCanvas.restore();
             bgimgobj = new Image();
-            bgimgobj.onload = function() {
+            bgimgobj.onload = function () {
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
                 bridgeCanvas.save();
@@ -96,9 +108,9 @@ function bgImageSwitcherPrevious() {
         current_picture--;
         new_url_bg = current_picture.toString().concat('\ \(2\).png');
         new_url_top = current_picture.toString().concat('\ \(1\).png');
-        img.onload = function() {
+        img.onload = function () {
             bridgeCanvas.restore();
-            bgimgobj.onload = function() {
+            bgimgobj.onload = function () {
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
                 bridgeCanvas.save();
@@ -111,9 +123,9 @@ function bgImageSwitcherPrevious() {
         current_picture = 10
         new_url_bg = current_picture.toString().concat('\ \(2\).png');
         new_url_top = current_picture.toString().concat('\ \(1\).png');
-        img.onload = function() {
+        img.onload = function () {
             bridgeCanvas.restore();
-            bgimgobj.onload = function() {
+            bgimgobj.onload = function () {
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
                 bridgeCanvas.save();
@@ -127,19 +139,19 @@ function bgImageSwitcherPrevious() {
 
 // setup listener di eventi su canvas
 
-bridge.addEventListener("mousemove", function(e) {
-	var brushPos = getBrushPos(e.clientX, e.clientY);
+bridge.addEventListener("mousemove", function (e) {
+    var brushPos = getBrushPos(e.clientX, e.clientY);
     var leftBut = detectLeftButton(e);
     if (leftBut == 1) {
-		drawDot(brushPos.x, brushPos.y);
+        drawDot(brushPos.x, brushPos.y);
     }
 }, false);
 
-bridge.addEventListener("touchmove", function(e) {
+bridge.addEventListener("touchmove", function (e) {
     e.preventDefault();
     var touch = e.targetTouches[0];
     if (touch) {
-    var brushPos = getBrushPos(touch.pageX, touch.pageY);
+        var brushPos = getBrushPos(touch.pageX, touch.pageY);
         drawDot(brushPos.x, brushPos.y);
     }
 }, false);
@@ -154,10 +166,24 @@ function getFullscreenElement() {
 }
 
 function toggleFullscreen() {
-    if(getFullscreenElement()) {
+    if (getFullscreenElement()) {
         document.exitFullscreen();
-    }else {
+    } else {
         document.documentElement.requestFullscreen().catch(console.log);
+    }
+}
+
+function setCanvasWidth() {
+    if (window.matchMedia("only screen and (min-width: 1000px)").matches) {
+        if ((document.getElementById("canvas-div").offsetWidth / document.getElementById("canvas-div").offsetHeight) < 1.77) {
+            bridge.style["width"] = "100%";
+            bridge.style["max-width"] = "1280px";
+            bridge.style["height"] = "auto";
+        } else {
+            bridge.style["height"] = "100%";
+            bridge.style["max-height"] = "720px";
+            bridge.style["width"] = "auto";
+        }
     }
 }
 
@@ -166,3 +192,5 @@ function toggleFullscreen() {
 avanti.addEventListener("click", bgImageSwitcherNext);
 
 indietro.addEventListener("click", bgImageSwitcherPrevious);
+
+window.onresize = setCanvasWidth;
