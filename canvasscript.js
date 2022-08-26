@@ -1,13 +1,15 @@
 const schermata_principale = document.getElementById("page-div");
 const indietro = document.getElementById("indietro"); // tasto indietro
 const avanti = document.getElementById("avanti"); // tasto avanti
-const fullscreen = document.getElementById("fullscreen"); // tasto avanti
+const audio_button = document.getElementById("settings"); // tasto avanti
 const start_experience = document.getElementById("start-experience"); // tasto iniziale
 const condividi = document.getElementById("condividi"); // tasto condividi
 var bridge = document.getElementById("bridge"),
     bridgeCanvas = bridge.getContext('2d'),
     brushRadius = (bridge.width / 100) * 5,
     img = new Image();
+var audio = new Audio('sound.mp3');
+audio.loop = true;
 
 // setup prima canvas iniziale
 
@@ -187,10 +189,23 @@ function setCanvasWidth() {
     }
 }
 
+function playAudio() {
+    if (audio.paused) {
+        audio_button.innerHTML = '<i class="fa fa-volume-up"></i>';
+        audio.currentTime = 0;
+        audio.play();
+    } else {
+        audio_button.innerHTML = '<i class="fa fa-volume-off"></i>';
+        audio.pause();
+    }
+}
+
 // altri listener
 
 avanti.addEventListener("click", bgImageSwitcherNext);
 
 indietro.addEventListener("click", bgImageSwitcherPrevious);
+
+audio_button.addEventListener("click", playAudio)
 
 window.onresize = setCanvasWidth;
