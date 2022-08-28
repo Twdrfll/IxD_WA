@@ -154,6 +154,7 @@ function bgImageSwitcherPrevious() {
         new_url_top = current_picture.toString().concat('\ \(1\).png');
         img.onload = function () {
             bridgeCanvas.restore();
+            bgimgobj = new Image();
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
@@ -172,6 +173,7 @@ function bgImageSwitcherPrevious() {
         new_url_top = current_picture.toString().concat('\ \(1\).png');
         img.onload = function () {
             bridgeCanvas.restore();
+            bgimgobj = new Image();
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
@@ -217,16 +219,14 @@ function toggleFullscreen() {
 }
 
 function setCanvasWidth() {
-    if (window.matchMedia("only screen and (min-width: 1000px)").matches) {
-        if ((document.getElementById("canvas-div").offsetWidth / document.getElementById("canvas-div").offsetHeight) < 1.77) {
-            bridge.style["width"] = "100%";
-            bridge.style["max-width"] = "1280px";
-            bridge.style["height"] = "auto";
-        } else {
-            bridge.style["height"] = "100%";
-            bridge.style["max-height"] = "720px";
-            bridge.style["width"] = "auto";
-        }
+    if ((document.getElementById("canvas-div").offsetWidth / document.getElementById("canvas-div").offsetHeight) < 1.77) {
+        bridge.style["width"] = "100%";
+        bridge.style["max-width"] = "1280px";
+        bridge.style["height"] = "auto";
+    } else {
+        bridge.style["height"] = "100%";
+        bridge.style["max-height"] = "720px";
+        bridge.style["width"] = "auto";
     }
 }
 
