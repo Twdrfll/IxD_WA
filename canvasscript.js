@@ -65,6 +65,7 @@ if (brushRadius < 50) { brushRadius = 50 }
 img.onload = function () {
     bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
     bridgeCanvas.save();
+    loading_screen.style.zIndex = -1;
     changeSurroundingImageData(current_picture);
     changeGradientBgColors(current_picture);
     // changeAudio(current_picture);
