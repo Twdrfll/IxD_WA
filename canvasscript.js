@@ -11,16 +11,16 @@ var bridge = document.getElementById("bridge"),
     img = new Image();
 var audio = new Audio('sound.mp3');
 audio.loop = true;
-const image_data = [["Immagine 1", "anno 1"],
-["Immagine 2", "anno 2"],
-["Immagine 3", "anno 3"],
-["Immagine 4", "anno 4"],
-["Immagine 5", "anno 5"],
-["Immagine 6", "anno 6"],
-["Immagine 7", "anno 7"],
-["Immagine 8", "anno 8"],
-["Immagine 9", "anno 9"],
-["Immagine 10", "anno 10"]];
+const image_data = [["Scioglimento dei ghiacciai, Groenlandia", "2014 - 2016", "64\xB010\u2032N 51\xB045\u2032W"],
+["Urbanizzazione e fiume Giallo, Cina", "1989 - 2020", "37\xB046\u203248\u2033N 119\xB015\u203200\u2033E"],
+["Siccit\u00E0 del fiume Po, Italia", "2020 - 2022", "45\xB00\u203258\u2033N 11\xB018\u203222\u2033E"],
+["Deforestazione in Paraguay", "2017 - 2020", "25\xB017\u203247\u2033S 57\xB038\u203229\u2033W"],
+["Siccit\u00E0 del lago Poop\u00F2, Bolivia", "2013 - 2016", "18\xB033\u2032S 67\xB005\u2032W"],
+["Innalzamento dei mari a Sydney, Australia", "2020 - 2021", "33\xB052\u203204\u2033S 151\xB012\u203226\u2033E"],
+["Deforestazione delle foreste del Congo", "1984 - 2020", "4\xB019\u203219\u2033S 15\xB019\u203215\u2033E"],
+["Innalzamento del fiume Paran\u00E1, Argentina", "2019 - 2020", "20\xB05\u203212\u2033S 51\xB00\u20322\u2033W"],
+["Honey Praire Fire in Georgia, USA", "2011", "30\xB043\u203248\u2033N 82\xB022\u203208\u2033W"],
+["Collasso dei ghiacciai, Antartide Orientale", "1989 - 2022", "80\xB0S 80\xB0E"]];
 const gradientbg_colors = ['rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%',
     'rgba(212, 224, 155, 1) 0%, rgba(246, 244, 210, 1) 25%, rgba(203, 223, 189, 1) 51%, rgba(241, 156, 121, 1) 100%',
     'rgba(255, 166, 158, 1) 0%, rgba(250, 243, 221, 1) 25%, rgba(184, 242, 230, 1) 51%, rgba(174, 217, 224, 1) 100%',
@@ -32,6 +32,17 @@ const gradientbg_colors = ['rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%,
     'rgba(239, 71, 111, 1) 0%, rgba(255, 209, 102, 1) 25%, rgba(6, 214, 160, 1) 51%, rgba(17, 138, 178, 1) 100%',
     'rgba(241, 250, 238, 1) 0%, rgba(168, 218, 220, 1) 25%, rgba(69, 123, 157, 1) 51%, rgba(29, 53, 87, 1) 100%',
 ];
+const sound_names = ['',
+'',
+'',
+'',
+'',
+'',
+'',
+'',
+'',
+''
+]
 
 // setup prima canvas iniziale
 
@@ -54,6 +65,9 @@ if (brushRadius < 50) { brushRadius = 50 }
 img.onload = function () {
     bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
     bridgeCanvas.save();
+    changeSurroundingImageData(current_picture);
+    changeGradientBgColors(current_picture);
+    // changeAudio(current_picture);
 }
 img.loc = 'immagini/';
 img.filename = '1\ \(1\).png';
@@ -91,14 +105,13 @@ function drawDot(mouseX, mouseY) {
 
 function changeSurroundingImageData(image_number) {
     image_number--;
-    document.getElementById("image-title").innerHTML = "<h1>" + image_data[image_number][0] + "</h1>";
+    document.getElementById("image-title").innerHTML = "<h1>" + image_data[image_number][0] + "</h1> <p>" + image_data[image_number][2] + "</p>";
     document.getElementById("year").innerHTML = "<h1>" + image_data[image_number][1] + "</h1>";
 }
 
 function changeGradientBgColors(image_number) {
     image_number--;
     document.body.style.backgroundImage = 'linear-gradient(-45deg,' + gradientbg_colors[image_number] + ')';
-    console.log(document.body.style["background-image"]);
 }
 
 function bgImageSwitcherNext() {
@@ -114,6 +127,7 @@ function bgImageSwitcherNext() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
+                // changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -133,6 +147,7 @@ function bgImageSwitcherNext() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
+                // changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -158,6 +173,7 @@ function bgImageSwitcherPrevious() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
+                // changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -177,6 +193,7 @@ function bgImageSwitcherPrevious() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
+                // changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -210,12 +227,9 @@ bridge.addEventListener("touchmove", function (e) {
 
 // altre funzioni
 
-function toggleFullscreen() {
-    if (getFullscreenElement()) {
-        document.exitFullscreen();
-    } else {
-        document.documentElement.requestFullscreen().catch(console.log);
-    }
+function changeAudio(image_number) {
+    directory_name = "";
+    audio.src = directory_name + sound_names[image_number - 1];
 }
 
 function setCanvasWidth() {
