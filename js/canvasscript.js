@@ -11,16 +11,16 @@ var bridge = document.getElementById("bridge"),
     img = new Image();
 var audio = new Audio('sound.mp3');
 audio.loop = true;
-const image_data = [["Scioglimento dei ghiacciai, Groenlandia", "2014 - 2016", "64\xB010\u2032N 51\xB045\u2032W"],
-["Urbanizzazione e fiume Giallo, Cina", "1989 - 2020", "37\xB046\u203248\u2033N 119\xB015\u203200\u2033E"],
-["Siccit\u00E0 del fiume Po, Italia", "2020 - 2022", "45\xB00\u203258\u2033N 11\xB018\u203222\u2033E"],
-["Deforestazione in Paraguay", "2017 - 2020", "25\xB017\u203247\u2033S 57\xB038\u203229\u2033W"],
-["Siccit\u00E0 del lago Poop\u00F2, Bolivia", "2013 - 2016", "18\xB033\u2032S 67\xB005\u2032W"],
-["Innalzamento dei mari a Sydney, Australia", "2020 - 2021", "33\xB052\u203204\u2033S 151\xB012\u203226\u2033E"],
-["Deforestazione delle foreste del Congo", "1984 - 2020", "4\xB019\u203219\u2033S 15\xB019\u203215\u2033E"],
-["Innalzamento del fiume Paran\u00E1, Argentina", "2019 - 2020", "20\xB05\u203212\u2033S 51\xB00\u20322\u2033W"],
-["Honey Praire Fire in Georgia, USA", "2011", "30\xB043\u203248\u2033N 82\xB022\u203208\u2033W"],
-["Collasso dei ghiacciai, Antartide Orientale", "1989 - 2022", "80\xB0S 80\xB0E"]];
+const image_data = [["<img src=\"/immagini/greenland.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Scioglimento dei ghiacciai", "2014 - 2016", "64\xB010\u2032N 51\xB045\u2032W"],
+["<img src=\"/immagini/china.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Urbanizzazione", "1989 - 2020", "37\xB046\u203248\u2033N 119\xB015\u203200\u2033E"],
+["<img src=\"/immagini/italy.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Siccit\u00E0 del fiume Po", "2020 - 2022", "45\xB00\u203258\u2033N 11\xB018\u203222\u2033E"],
+["<img src=\"/immagini/paraguay.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Deforestazione", "2017 - 2020", "25\xB017\u203247\u2033S 57\xB038\u203229\u2033W"],
+["<img src=\"/immagini/bolivia.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Siccit\u00E0 del lago Poop\u00F2", "2013 - 2016", "18\xB033\u2032S 67\xB005\u2032W"],
+["<img src=\"/immagini/australia.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Innalzamento dei mari", "2020 - 2021", "33\xB052\u203204\u2033S 151\xB012\u203226\u2033E"],
+["<img src=\"/immagini/democratic-republic-of-congo.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Deforestazione", "1984 - 2020", "4\xB019\u203219\u2033S 15\xB019\u203215\u2033E"],
+["<img src=\"/immagini/argentina.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Innalzamento del fiume Paran\u00E1", "2019 - 2020", "20\xB05\u203212\u2033S 51\xB00\u20322\u2033W"],
+["<img src=\"/immagini/united-states.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Incendio boschivo in Georgia", "2011 - 2012", "30\xB043\u203248\u2033N 82\xB022\u203208\u2033W"],
+["<img src=\"/immagini/antarctica.png\" style=\"width: 30px; height: 30px; margin-right: 10px;\">Collasso dei ghiacciai", "1989 - 2022", "80\xB0S 80\xB0E"]];
 const gradientbg_colors = ['rgba(59, 173, 227, 1) 0%, rgba(87, 111, 230, 1) 25%, rgba(152, 68, 183, 1) 51%, rgba(255, 53, 127, 1) 100%',
     'rgba(212, 224, 155, 1) 0%, rgba(246, 244, 210, 1) 25%, rgba(203, 223, 189, 1) 51%, rgba(241, 156, 121, 1) 100%',
     'rgba(255, 166, 158, 1) 0%, rgba(250, 243, 221, 1) 25%, rgba(184, 242, 230, 1) 51%, rgba(174, 217, 224, 1) 100%',

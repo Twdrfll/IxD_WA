@@ -309,7 +309,11 @@ body {
     }
 
     #image-title h1 {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    #image-title p {
+        margin-bottom: 15px;
     }
 
     #button-back {
@@ -380,6 +384,7 @@ body {
     }
 
     #button-share {
+        margin-top: 8px;
         display: flex;
         height: 50%;
         justify-content: flex-start;
@@ -401,6 +406,7 @@ body {
     }
 
     #year {
+        margin-top: 18px;
         background-color: transparent;
         display: flex;
         height: 100%;
@@ -412,7 +418,6 @@ body {
 
     #year h1 {
         color: black;
-        margin-top: 5px;
     }
 
     #credits {
