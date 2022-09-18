@@ -231,12 +231,9 @@ bridge.addEventListener("touchmove", function (e) {
 function changeAudio(image_number) {
     directory_name = "/audio/" + sound_names[image_number - 1];
     new_audio = directory_name + "audio.mp3";
-    if (new_audio != audio.src) {
-        console.log("new_audio: " + new_audio + ". Old audio src: " + audio.src + ".");
-        audio.src = new_audio;
-        if (audio_button.innerHTML == '<i class="fa fa-volume-up"></i>') {
-            audio.play();
-        }
+    audio.src = new_audio;
+    if (audio_button.innerHTML == '<i class="fa fa-volume-up"></i>') {
+        audio.play();
     }
 }
 
