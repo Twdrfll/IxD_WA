@@ -16,7 +16,7 @@ const image_data = [["<img src=\"/immagini/greenland.png\" style=\"width: 26px; 
 ["<img src=\"/immagini/italy.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Siccit\u00E0 del fiume Po", "2020 - 2022", "45\xB00\u203258\u2033N 11\xB018\u203222\u2033E"],
 ["<img src=\"/immagini/paraguay.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Deforestazione", "2017 - 2020", "25\xB017\u203247\u2033S 57\xB038\u203229\u2033W"],
 ["<img src=\"/immagini/bolivia.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Siccit\u00E0 del lago Poop\u00F2", "2013 - 2016", "18\xB033\u2032S 67\xB005\u2032W"],
-["<img src=\"/immagini/australia.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Innalzamento dei mari", "2020 - 2021", "33\xB052\u203204\u2033S 151\xB012\u203226\u2033E"],
+["<img src=\"/immagini/australia.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Innalzamento dei fiumi", "2020 - 2021", "33\xB052\u203204\u2033S 151\xB012\u203226\u2033E"],
 ["<img src=\"/immagini/democratic-republic-of-congo.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Deforestazione", "1984 - 2020", "4\xB019\u203219\u2033S 15\xB019\u203215\u2033E"],
 ["<img src=\"/immagini/argentina.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Innalzamento del fiume Paran\u00E1", "2019 - 2020", "20\xB05\u203212\u2033S 51\xB00\u20322\u2033W"],
 ["<img src=\"/immagini/united-states.png\" style=\"width: 26px; height: 26px; margin-right: 10px;\">Incendio boschivo in Georgia", "2011 - 2012", "30\xB043\u203248\u2033N 82\xB022\u203208\u2033W"],
