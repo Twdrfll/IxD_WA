@@ -32,16 +32,16 @@ const gradientbg_colors = ['#336B8A 0%, #7B9AAC 25%, #C2C7CF 51%, #E2E4E6 100%',
     '#00838F 0%, #74BEB6 25%, #F28482 51%, #F8AD9D 100%',
     'rgba(241, 250, 238, 1) 0%, rgba(168, 218, 220, 1) 25%, rgba(69, 123, 157, 1) 51%, rgba(29, 53, 87, 1) 100%',
 ];
-const sound_names = ['',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-'',
-''
+const sound_names = ['ghiacciai/',
+    'urbanizzazione/',
+    'desertificazione/',
+    'desertificazione/',
+    'desertificazione/',
+    'alluvioni/',
+    'desertificazione/',
+    'alluvioni/',
+    'incendi/',
+    'ghiacciai/'
 ]
 
 // setup prima canvas iniziale
@@ -68,7 +68,7 @@ img.onload = function () {
     loading_screen.style.zIndex = -1;
     changeSurroundingImageData(current_picture);
     changeGradientBgColors(current_picture);
-    // changeAudio(current_picture);
+    changeAudio(current_picture);
 }
 img.loc = 'immagini/';
 img.filename = '1\ \(1\).png';
@@ -128,7 +128,7 @@ function bgImageSwitcherNext() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
-                // changeAudio(current_picture);
+                changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -148,7 +148,7 @@ function bgImageSwitcherNext() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
-                // changeAudio(current_picture);
+                changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -174,7 +174,7 @@ function bgImageSwitcherPrevious() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
-                // changeAudio(current_picture);
+                changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -194,7 +194,7 @@ function bgImageSwitcherPrevious() {
             bgimgobj.onload = function () {
                 changeSurroundingImageData(current_picture);
                 changeGradientBgColors(current_picture);
-                // changeAudio(current_picture);
+                changeAudio(current_picture);
                 loading_screen.style.zIndex = "-1";
                 bridge.style['background-image'] = "url('" + bgimgobj.src + "')";
                 bridgeCanvas.drawImage(img, 0, 0, bridge.width, bridge.height);
@@ -229,8 +229,15 @@ bridge.addEventListener("touchmove", function (e) {
 // altre funzioni
 
 function changeAudio(image_number) {
-    directory_name = "";
-    audio.src = directory_name + sound_names[image_number - 1];
+    directory_name = "/audio/" + sound_names[image_number - 1];
+    new_audio = directory_name + "audio.mp3";
+    if (new_audio != audio.src) {
+        console.log("new_audio: " + new_audio + ". Old audio src: " + audio.src + ".");
+        audio.src = new_audio;
+        if (audio_button.innerHTML == '<i class="fa fa-volume-up"></i>') {
+            audio.play();
+        }
+    }
 }
 
 function setCanvasWidth() {
